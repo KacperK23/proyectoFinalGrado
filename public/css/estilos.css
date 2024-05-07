@@ -1,0 +1,169 @@
+#banner-publi-inicio {
+    width: 100%;
+    height: 125px;
+}
+
+form.formulariosFondoGris{
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 35px;
+    padding: 20px;
+    background-color: rgb(214, 214, 214);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+#escudo-maella {
+    height: 50px;
+    width: 50px;
+}
+.ofertas{
+    height: 400px;
+}
+.botonIniciarSesion{
+    color: red;
+}
+.botonIniciarSesion:hover{
+    color: white;
+}
+.botonesRegistro{
+    color: white;
+}
+
+.selectoresFormulario{
+    margin-right: auto;
+    margin-bottom: 0;
+}
+
+/*Estilo pagina perfil*/
+#caja-padre {
+    display: flex;
+}
+
+.cajas {
+    width: 50%;
+}
+
+#caja1 {
+    padding-left: 30px;
+}
+#caja2 div.tablasCollapse {
+    margin: 20px;
+    overflow-y: auto;
+    max-height: 150px;
+    max-width: 80%;    
+}
+table {
+    border-collapse: collapse;
+    border-radius: 20px;
+    width: 100%; /* Añadir un ancho para que la tabla ocupe el 100% del contenedor */
+}
+tr {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+tr.filasDatos:hover{
+    background-color: grey;
+
+}
+/*
+#caja1 {
+    background-color: blue;
+}
+
+#caja2 {
+    background-color: red;
+}
+*/
+
+/*No disponibilidad*/
+#divNoDisponibilidad{
+    text-align: center;
+}
+
+#divNoDisponibilidad div div#botonesSecundarios{
+    margin-top: 10px;
+}
+#divNoDisponibilidad div div#botonesSecundarios button{
+    margin:10px
+}
+a{
+    text-decoration: none;
+}
+
+/*Panel central*/
+#panelcentralImagenOferta{
+    height: 50px;
+    width: auto;
+}
+
+.panelCabezeraSecciones{
+    text-align: center;
+}
+.panelCabezeraSecciones div{
+    text-align: right;
+}
+
+.dataTable{
+    font-size: 14px;
+}
+
+/*Master*/
+.btnUsuario{
+    border: 1px solid white;
+    background-color: green;
+    color: white;
+}
+.btnUsuari1{
+    border: 1px solid white;
+    background-color: rgb(244, 2, 2);
+    color: white;
+}
+
+
+/* sitios cercanos*/
+.titulositioscercanos{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+#sitioscercanos{
+    text-align: center;
+}
+
+#sitioscercanos div.col{
+    padding: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    background-color: rgba(var(--bs-emphasis-color-rgb), 0.05);
+    border-radius: 25px;
+}
+
+/*SERVICIOS*/
+#servicios .col {
+    width: 200px;
+    height: 200px;
+    margin-left: 10px;
+    margin-right: 10px; 
+    margin-bottom: 20px; /* Establece un margen en la parte inferior de cada div */
+    background-color: lightblue; /* Solo para visualización */
+    flex: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#servicios .row{
+    justify-content: center;
+}
+#servicios h2{
+    text-align: center
+}
+#servicios div.col i, div.col span{
+    font-size: 60px
+}
+#servicios div.col p{
+    font-size: 15px;
+    font-weight: bold;
+}
