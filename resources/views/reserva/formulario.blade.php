@@ -14,6 +14,10 @@
           <label for="fechaSalida" class="form-label">FECHA DE SALIDA</label>
           <input type="date" id="fechaSalida" name="fechaSalida" class="form-control" value="{{ $reserva->fecha_salida ?? '' }}">
         </div>
+        <div class="mb-3">
+          <label for="dni" class="form-label">DNI</label>
+          <input type="text" id="dni" name="dni" class="form-control" placeholder="Ingrese su DNI" value="{{ $reserva->usuario->dni ?? '' }}">
+        </div>
         <div class="mb-3 d-flex align-items-center">
           <label for="tipoHabitacion" class="form-label selectoresFormulario">Tipo de habitacion</label>
           <select class="form-select w-75" name="tipoHabitacion" id="">
@@ -36,6 +40,14 @@
                   <option value="3">3</option>
           </select>
       </div>
+
+      <div class="mb-3 d-flex align-items-center">
+        <label for="pagado" class="form-label selectoresFormulario">Pagado</label>
+        <select class="form-select w-75" name="pagado" id="">
+                <option value="0" @if( $reserva->pagado == 0) selected @endif>NO</option>
+                <option value="1" @if( $reserva->pagado == 1) selected @endif>SI</option>
+        </select>
+    </div>
      
       <input type="hidden" name="usuario_id" value="{{ $reserva->usuario_id}}">
     </div>

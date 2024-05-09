@@ -74,7 +74,7 @@
                         <a class="nav-link" href="{{ route('quienessomos') }}">¿QUIENES SOMOS?</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">DONDE ESTAMOS</a>
+                        <a class="nav-link" href="{{ route('dondeestamos') }}">DONDE ESTAMOS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('sitioscercanos') }}">SITIOS CERCANOS</a>

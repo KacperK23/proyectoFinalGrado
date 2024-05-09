@@ -136,6 +136,7 @@ class ReservaController extends Controller
         $reserva->usuario_id = $r->usuario_id;
         $reserva->habitacion_id = $r->tipoHabitacion;
         $reserva->cantidad = $r->cantidad;
+        $reserva->pagado = $r->pagado;
         $reserva->save();
 
         return redirect()->route('mostrar_datos');

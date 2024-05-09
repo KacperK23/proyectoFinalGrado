@@ -90,6 +90,7 @@
                             <th>Tipo de habitacion</th>
                             <th>Cantidad</th>
                             <th>Oferta</th>
+                            <th>Pagado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,6 +110,12 @@
                                     echo "NO";
                                 }
                                 ?></td>
+                                <td> @if($hoy->pagado == 1)
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    @else
+                                    <i class="bi bi-dash-circle-fill text-danger"></i>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -136,6 +143,7 @@
                                 <th>Tipo de habitacion</th>
                                 <th>Cantidad</th>
                                 <th>Oferta</th>
+                                <th>Pagado</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -157,6 +165,12 @@
                                 echo "NO";
                             }
                                 ?></td>
+                            <td> @if($reserva->pagado == 1)
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                @else
+                                <i class="bi bi-dash-circle-fill text-danger"></i>
+                                @endif
+                            </td>
                             <td><button class="btn btn-primary"><a class="text-white"
                                         href="{{ route('reserva.editar', $reserva->id) }}">EDITAR</a></button></td>
                             <td>
@@ -217,7 +231,24 @@
                                 @endif
                             </td>
                             <td>
-                                <img id="panelcentralImagenOferta" src="{{ asset($oferta->imagen_banner)}}" alt="Foto enchufe">
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalImagen{{ $oferta->id }}">
+                                    <img id="panelcentralImagenOferta" src="{{ asset($oferta->imagen_banner)}}" alt="Foto enchufe">
+                                  </button>
+
+                                                                  <!-- Modal -->
+<div class="modal fade" id="modalImagen{{ $oferta->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">IMAGEN</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="{{ asset($oferta->imagen_banner)}}" alt="" class="w-100">
+        </div>
+      </div>
+    </div>
+  </div>
                             </td>
                             <td>
                                 @foreach ($oferta->articulos as $articulo)
@@ -236,6 +267,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <!-- Modal Reserva-->
             </div>
 
             </div>
@@ -619,11 +651,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="precio" class="form-label">Precio</label>
-                                <input type="number" class="form-control" id="precio" name="precio" step=0.01 required>
+                                <input type="number" class="form-control" id="precio" name="precio" step=0.01 placeholder="Ingrese el precio de la habitacion" required>
                             </div>
                             <div class="mb-3">
                                 <label for="cantidad" class="form-label">Cantidad</label>
-                                <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                                <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad de habitaciones se ofertan" required>
                             </div>
                         </div>
                     <div class="modal-footer">

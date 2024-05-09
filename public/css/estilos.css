@@ -167,3 +167,26 @@ a{
     font-size: 15px;
     font-weight: bold;
 }
+
+/*DONDE ESTAMOS*/
+h2{
+    text-align: center;
+}
+#dondeestamos div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#dondeestamos div div#direccion{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+#dondeestamos div div#direccion i{
+   margin-right: 10px;
+}
+
+/*QUIENES SOMOS*/
+#quienessomos button span{
+    color: black;
+}

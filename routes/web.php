@@ -23,6 +23,9 @@ Route::get('/servicios', function () {
 Route::get('/sitioscercanos', function () {
     return view('sitioscercanos');
 })->name('sitioscercanos');
+Route::get('/dondeestamos', function () {
+    return view('dondeestamos');
+})->name('dondeestamos');
 
 Route::get('/perfil/{id}', [ReservaController::class, 'mostrarperfil'])->name('mostrarperfil');
 Route::get('/configuracion/{id}/edit', [UsuarioController::class, 'editar'])->name('configuracion');

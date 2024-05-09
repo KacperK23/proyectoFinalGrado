@@ -4,6 +4,12 @@
 
 @section("content")
 <div class="container" id="servicios">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ route('inicio') }}">INICIO</a></li>
+          <li class="breadcrumb-item active" aria-current="page">SERVICIOS</li>
+        </ol>
+      </nav>
     <h2>SERVICIOS</h2>
     <div class="row">
         <div class="col">
