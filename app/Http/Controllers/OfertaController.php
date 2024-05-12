@@ -17,22 +17,25 @@ class OfertaController extends Controller
     }
     public function actualizarDatos($id, Request $r) {
         $oferta = Oferta::find($id);
-        if ($r->hasFile('imagen')){
-            $rutaImagen = "";
-
+        if ($r->hasFile('imagen') && $r->hasFile('imagenOferta')) {
             // Obtiene el archivo de la solicitud
             $imagen = $r->file('imagen');
+            $imagenOferta = $r->file('imagenOferta');
     
             // Genera un nombre único para la imagen
             $nombreImagen = uniqid('imagen_') . '.' . $imagen->getClientOriginalExtension();
+            $nombreImagenOferta = uniqid('imagen_') . '.' . $imagenOferta->getClientOriginalExtension();
     
             // Mueve la imagen a la carpeta public/imagenes
             $imagen->move(public_path('imagenes'), $nombreImagen);
+            $imagenOferta->move(public_path('imagenes'), $nombreImagenOferta);
     
             // Almacena la ruta de la imagen en la variable $rutaImagen
             $rutaImagen = 'imagenes/' . $nombreImagen;
+            $rutaImagenOferta = 'imagenes/' . $nombreImagenOferta;
         } else {
             $rutaImagen = $oferta->imagen_banner;
+            $rutaImagenOferta = $oferta->imagen_oferta;
         }
 
         // Busca si hay alguna oferta con banner establecido como 1
@@ -66,6 +69,7 @@ class OfertaController extends Controller
         $oferta->fecha_salida = $r->fechaSalida;
         $oferta->habitacion_id = $r->tipoHabitacion;
         $oferta->imagen_banner = $rutaImagen;
+        $oferta->imagen_oferta = $rutaImagenOferta;
         $oferta->banner = $r->banner;
         $oferta->save();
         
@@ -86,26 +90,32 @@ class OfertaController extends Controller
         $rutaImagen = "";
     
         // Verifica si se ha enviado una imagen
-        if ($r->hasFile('imagen')) {
+        if ($r->hasFile('imagen') && $r->hasFile('imagenOferta')) {
             // Obtiene el archivo de la solicitud
             $imagen = $r->file('imagen');
+            $imagenOferta = $r->file('imagenOferta');
     
             // Genera un nombre único para la imagen
             $nombreImagen = uniqid('imagen_') . '.' . $imagen->getClientOriginalExtension();
+            $nombreImagenOferta = uniqid('imagen_') . '.' . $imagenOferta->getClientOriginalExtension();
     
             // Mueve la imagen a la carpeta public/imagenes
             $imagen->move(public_path('imagenes'), $nombreImagen);
+            $imagenOferta->move(public_path('imagenes'), $nombreImagenOferta);
     
             // Almacena la ruta de la imagen en la variable $rutaImagen
             $rutaImagen = 'imagenes/' . $nombreImagen;
+            $rutaImagenOferta = 'imagenes/' . $nombreImagenOferta;
         }
     
-        // Busca si hay alguna oferta con banner establecido como 1
+        if($r->eleccionBanner == 1){
+            // Busca si hay alguna oferta con banner establecido como 1
         $ofertaConBanner = Oferta::where('banner', 1)->first();
 
         // Si se encuentra alguna oferta con banner establecido como 1, actualiza el campo banner a 0
         if ($ofertaConBanner) {
             $ofertaConBanner->update(['banner' => 0]);
+        }
         }
         // Crea la oferta en la base de datos
         $oferta = Oferta::create([
@@ -116,7 +126,8 @@ class OfertaController extends Controller
             'fecha_salida' => $r->fechaSalida,
             'habitacion_id' => $r->tipoHabitacion,
             'imagen_banner' => $rutaImagen, // Utiliza $rutaImagen como valor para el campo 'imagen'
-            'banner' => 1,
+            'imagen_oferta' => $rutaImagenOferta, // Utiliza $rutaImagen como valor para el campo 'imagen'
+            'banner' => $r->eleccionBanner,
         ]);
         
         // Actualiza los artículos asociados a la oferta

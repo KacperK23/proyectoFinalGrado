@@ -209,6 +209,7 @@
                             <th>Tipo de habitacion</th>
                             <th>Banner</th>
                             <th>Imagen banner</th>
+                            <th>Imagen oferta</th>
                             <th>Articulos</th>
                             <th></th>
                             <th></th>
@@ -232,23 +233,41 @@
                             </td>
                             <td>
                                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalImagen{{ $oferta->id }}">
-                                    <img id="panelcentralImagenOferta" src="{{ asset($oferta->imagen_banner)}}" alt="Foto enchufe">
+                                    VER IMAGEN BANNER
                                   </button>
-
-                                                                  <!-- Modal -->
-<div class="modal fade" id="modalImagen{{ $oferta->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">IMAGEN</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <img src="{{ asset($oferta->imagen_banner)}}" alt="" class="w-100">
-        </div>
-      </div>
-    </div>
-  </div>
+                                <!-- Modal imagen banner-->
+                                <div class="modal fade" id="modalImagen{{ $oferta->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="exampleModalLabel">IMAGEN BANNER</h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <img src="{{ asset($oferta->imagen_banner)}}" alt="" class="w-100">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalImagenOferta{{ $oferta->id }}">
+                                    VER IMAGEN OFERTA
+                                  </button>
+                                <!-- Modal imagen banner-->
+                                <div class="modal fade" id="modalImagenOferta{{ $oferta->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h1 class="modal-title fs-5" id="exampleModalLabel">IMAGEN OFERTA</h1>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <img src="{{ asset($oferta->imagen_oferta)}}" alt="" class="w-100">
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                             </td>
                             <td>
                                 @foreach ($oferta->articulos as $articulo)
@@ -517,8 +536,19 @@
                                 <input type="date" name="fechaSalida" class="form-control fechaSalida">
                             </div>
                             <div class="mb-3">
-                                <label for="imagen" class="form-label">Imagen</label>
+                                <label for="eleccionBanner" class="form-label">¿Quieres poner esta oferta como destacada?</label>
+                                <select class="form-select w-75" name="eleccionBanner" id="">
+                                        <option value="1">SI</option>
+                                        <option value="0">NO</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="imagen" class="form-label">Imagen banner</label>
                                 <input class="form-control" type="file" name="imagen" id="imagen">
+                            </div>
+                            <div class="mb-3">
+                                <label for="imagenOferta" class="form-label">Imagen oferta</label>
+                                <input class="form-control" type="file" name="imagenOferta" id="imagenOferta">
                             </div>
                             <div class="mb-3 d-flex align-items-center">
                                 <label for="tipoHabitacion" class="form-label selectoresFormulario">Tipo de

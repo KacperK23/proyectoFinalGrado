@@ -18,5 +18,5 @@ class Oferta extends Model
         return $this->belongsToMany('App\Models\Articulo'); // Corregido el nombre del modelo
     } 
 
-    protected $fillable = ['nombre', 'descripcion', 'precio', 'fecha_entrada', 'fecha_salida', 'habitacion_id', 'imagen_banner', 'banner'];
+    protected $fillable = ['nombre', 'descripcion', 'precio', 'fecha_entrada', 'fecha_salida', 'habitacion_id', 'imagen_banner','imagen_oferta', 'banner'];
 }

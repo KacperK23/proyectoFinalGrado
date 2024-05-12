@@ -25,17 +25,25 @@
 
 
   <div class="mb-3">
-    <label for="imagen" class="form-label">Imagen</label>
+    <label for="imagen" class="form-label">Imagen banner</label>
+    <br>
+    <img src="{{ asset($oferta->imagen_banner) }}" alt="" class="w-25">
     <input class="form-control" type="file" name="imagen" id="imagen">
   </div>
   <div class="mb-3 d-flex align-items-center">
     <label for="tipoHabitacion" class="form-label selectoresFormulario">Bnner principal</label>
     <select class="form-select w-75" name="banner" id="">
-        <option value="1">SI</option>
-        <option value="0">NO</option>
+        <option value="1" @if( $oferta->banner == 1) selected @endif>SI</option>
+        <option value="0" @if( $oferta->banner == 0) selected @endif>NO</option>
     </select>
     </div>
 
+    <div class="mb-3">
+      <label for="imagenOferta" class="form-label">Imagen oferta</label>
+      <br>
+      <img src="{{ asset($oferta->imagen_oferta) }}" alt="" class="w-25">
+      <input class="form-control" type="file" name="imagenOferta" id="imagenOferta">
+    </div>
 
   <div class="mb-3">
       <label for="fechaEntrada" class="form-label">FECHA DE ENTRADA</label>
