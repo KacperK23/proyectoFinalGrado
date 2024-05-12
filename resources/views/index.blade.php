@@ -133,7 +133,7 @@
                 @foreach ($ofertas as $oferta)
                     <div class="col">
                         <div class="card ofertas p-2">
-                            <img src="{{ asset($oferta->imagen_oferta) }}" class="card-img-top h-100" id="banner-publi-inicio" alt="imagen de la oferta">
+                            <img src="{{ asset($oferta->imagen_oferta) }}" class="card-img-top h-75" id="banner-publi-inicio" alt="imagen de la oferta">
                             <div class="card-body text-center   ">
                                 <p class=""><strong>{{ $oferta->nombre }}</strong></p>
                                 <a href="{{ route('oferta.mostrar',['oferta' => $oferta->id]) }}" class="btn btn-primary">Ver oferta</a>

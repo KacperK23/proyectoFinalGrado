@@ -10,6 +10,8 @@ use App\Models\Habitacion;
 use App\Models\Articulo;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EnviarCorreoReserva;
 
 use function Laravel\Prompts\password;
 
@@ -62,6 +64,10 @@ class ReservaController extends Controller
             'cantidad'=> $cantidad,
             'oferta_id'=> $oferta_id,
         ]);
+
+        $pdfPath = 'http://localhost/laravel/proyecto/public/pdf/reserva.pdf';
+        $receivers = ['kacperprueba@gmail.com'];
+        Mail::to($receivers)->send(new EnviarCorreoReserva($reserva,$pdfPath));
 
         $data['resumenReserva'] = $reserva;
         return view('resumen', $data);
