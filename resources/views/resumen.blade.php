@@ -3,6 +3,7 @@
 @section("title", "Albergues Kacper")
 
 @section("content")
+<div class="container text-center" id="contenedorInfoOferta">
 <div class="container">
     <h1>Resumen de la Reserva</h1>
     <p><strong>Fecha de Entrada:</strong> {{ $resumenReserva->fecha_entrada }}</p>
@@ -20,5 +21,5 @@
     </a>
   @endif
 </div>
-  
+</div>
 @endsection

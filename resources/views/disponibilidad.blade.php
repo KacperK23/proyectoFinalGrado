@@ -14,6 +14,7 @@
         </a>
     </div>
 @else
+<div class="colorGradianteVerde">
 <form action="{{ route('insertarReserva') }}" method="post" class="formulariosFondoGris">
     @csrf
     <!--
@@ -82,6 +83,7 @@
             data-bs-target="#exampleModal">Realizar reserva</button>
     </div>
 </form>
+</div>
 @endif     
 @endsection
 

@@ -12,6 +12,8 @@ use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EnviarCorreoReserva;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 use function Laravel\Prompts\password;
 
@@ -65,9 +67,28 @@ class ReservaController extends Controller
             'oferta_id'=> $oferta_id,
         ]);
 
-        $pdfPath = 'http://localhost/laravel/proyecto/public/pdf/reserva.pdf';
-        $receivers = ['kacperprueba@gmail.com'];
-        Mail::to($receivers)->send(new EnviarCorreoReserva($reserva,$pdfPath));
+        // Llamar a la función para generar y guardar el PDF
+        // Crear PDF sin guardarlo en disco
+        $resumenReserva = $reserva;
+        // Configura las opciones de Dompdf
+        $options = new Options();
+        $options->set('isPhpEnabled', true); // Habilita el soporte PHP
+        $options->set('isRemoteEnabled', true); // Habilita la carga de recursos remotos
+        
+        // Inicializa Dompdf con las opciones configuradas
+        $dompdf = new Dompdf($options);
+        
+        // Establece la ruta base para las rutas de las imágenes
+        $dompdf->setBasePath(asset('/'));
+
+    $html = view('reserva.ficheropdf', compact('resumenReserva'))->render();
+    $dompdf->loadHtml($html);
+    $dompdf->render();
+    $pdfContents = $dompdf->output();
+
+    
+        //$receivers = ['kacperprueba@gmail.com'];
+        //Mail::to($receivers)->send(new EnviarCorreoReserva($reserva,$pdfContents));
 
         $data['resumenReserva'] = $reserva;
         return view('resumen', $data);

@@ -3,6 +3,7 @@
 @section("title", "Albergues Kacper")
 
 @section("content")
+<div class="colorGradianteVerde">
           <form method="POST" acction="{{route('register')}}" class="formulariosFondoGris">
             @csrf
             <div class="mb-3">

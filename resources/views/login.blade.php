@@ -3,6 +3,7 @@
 @section("title", "Albergues Kacper")
 
 @section("content")
+<div class="colorGradianteVerde">
           <form method="POST" acction="{{route ('login')}}" class="formulariosFondoGris">
             @csrf
             <div class="mb-3">
@@ -14,7 +15,7 @@
               <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
             </div>
             <div class="mb-3">
-              <p>¿No tienes cuenta? <a href="{{route('register')}}">Registrar</a></p>
+              <p>¿No tienes cuenta? <a href="{{route('register')}}">Registrar</a></p><p>¿Olvidaste tu contraseña? <a href="{{route('register')}}">Recuperar contraseña</a></p>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Acceder</button>

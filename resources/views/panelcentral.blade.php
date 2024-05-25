@@ -15,7 +15,7 @@
 
 <script>
     $(document).ready(function() {
-        $('.datatable').each(function() {
+        $('.datatableCol9y10').each(function() {
             $(this).DataTable({
                 "language": {
                     "lengthMenu": "Mostrar _MENU_ registros por página",
@@ -32,44 +32,144 @@
                     }
                 },
                 "lengthMenu": [5, 10, 15, 20],
-                //"columnDefs": [
-                //    {"orderable": false, "targets": [8, 9]} // Desactiva ordenación para las columnas que no deseas
-                //]
+                "columnDefs": [
+                    {"orderable": false, "targets": [9, 10]} // Desactiva ordenación para las columnas que no deseas
+                ]
+            });
+        });
+
+        $('.datatableCol11y12').each(function() {
+            $(this).DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente",
+                        "first": "Primero",
+                        "last": "Último"
+                    }
+                },
+                "lengthMenu": [5, 10, 15, 20],
+                "columnDefs": [
+                    {"orderable": false, "targets": [11, 12]} // Desactiva ordenación para las columnas que no deseas
+                ]
+            });
+        });
+
+        $('.datatableCol3y4').each(function() {
+            $(this).DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente",
+                        "first": "Primero",
+                        "last": "Último"
+                    }
+                },
+                "lengthMenu": [5, 10, 15, 20],
+                "columnDefs": [
+                    {"orderable": false, "targets": [3, 4]} // Desactiva ordenación para las columnas que no deseas
+                ]
+            });
+        });
+
+        $('.datatableCol7y8').each(function() {
+            $(this).DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente",
+                        "first": "Primero",
+                        "last": "Último"
+                    }
+                },
+                "lengthMenu": [5, 10, 15, 20],
+                "columnDefs": [
+                    {"orderable": false, "targets": [7, 8]} // Desactiva ordenación para las columnas que no deseas
+                ]
+            });
+        });
+
+        $('.datatableCol4y5').each(function() {
+            $(this).DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron registros",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente",
+                        "first": "Primero",
+                        "last": "Último"
+                    }
+                },
+                "lengthMenu": [5, 10, 15, 20],
+                "columnDefs": [
+                    {"orderable": false, "targets": [4, 5]} // Desactiva ordenación para las columnas que no deseas
+                ]
             });
         });
     });
+
     </script>
     
+    <div class="alert alert-primary d-block d-sm-none mt-5 mx-2" role="alert">
+        Todas las tablas en movil no se muestran, cambia a un dispositivo grande como un ordenador para verlas.
+      </div>
 
-    <div class="container mt-5">
+      <div class="alert alert-primary d-none d-md-block d-lg-none mt-5 mx-2" role="alert">
+        En tablet solo se muestra la tabla de reservas de hoy, cambia a un dispositivo grande como un ordenador para verlas.
+    </div>
+    
+    <div class="container mt-5 d-none d-md-table">
         <ul class="nav nav-tabs" id="myTabs">
             <li class="nav-item">
-                <a class="nav-link active" id="reservasHoy-tab" data-bs-toggle="tab" href="#reservasHoy" role="tab"
+                <a class="nav-link active pestanasPanelCentral" id="reservasHoy-tab" data-bs-toggle="tab" href="#reservasHoy" role="tab"
                     aria-controls="reservasHoy" aria-selected="true">Reservas Hoy</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" id="reservas-tab" data-bs-toggle="tab" href="#reservas" role="tab"
+                <a class="nav-link pestanasPanelCentral d-none d-lg-table" id="reservas-tab" data-bs-toggle="tab" href="#reservas" role="tab"
                     aria-controls="reservas" aria-selected="false">Reservas</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" id="ofertas-tab" data-bs-toggle="tab" href="#ofertas" role="tab"
+                <a class="nav-link pestanasPanelCentral d-none d-lg-table" id="ofertas-tab" data-bs-toggle="tab" href="#ofertas" role="tab"
                     aria-controls="ofertas" aria-selected="false">Ofertas</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" id="articulos-tab" data-bs-toggle="tab" href="#articulos" role="tab"
+                <a class="nav-link pestanasPanelCentral d-none d-lg-table" id="articulos-tab" data-bs-toggle="tab" href="#articulos" role="tab"
                     aria-controls="articulos" aria-selected="false">Articulos</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" id="usuarios-tab" data-bs-toggle="tab" href="#usuarios" role="tab"
+                <a class="nav-link pestanasPanelCentral d-none d-lg-table" id="usuarios-tab" data-bs-toggle="tab" href="#usuarios" role="tab"
                     aria-controls="usuarios" aria-selected="false">Usuarios</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" id="habitaciones-tab" data-bs-toggle="tab" href="#habitaciones" role="tab"
+                <a class="nav-link pestanasPanelCentral d-none d-lg-table" id="habitaciones-tab" data-bs-toggle="tab" href="#habitaciones" role="tab"
                     aria-controls="habitaciones" aria-selected="false">Habitacion</a>
             </li>
         </ul>
@@ -132,7 +232,7 @@
                 </div>
 
                 <div class="pt-2">
-                    <table id="" class="table table-striped datatable">
+                    <table id="" class="table table-striped datatableCol9y10">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -197,7 +297,7 @@
                 </div>
 
             <div class="pt-2">
-                <table id="" class="table table-striped datatable">
+                <table id="" class="table table-striped datatableCol11y12">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -301,7 +401,7 @@
                 </div>
 
                 <div class="pt-2">
-                    <table id="" class="table table-striped datatable">
+                    <table id="" class="table table-striped datatableCol3y4">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -341,7 +441,7 @@
                     </div>
                 </div>
                 <div class="pt-2">
-                    <table id="" class="table table-striped datatable">
+                    <table id="" class="table table-striped datatableCol7y8">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -389,7 +489,7 @@
                     </div>
                 </div>
                 <div class="pt-2">
-                    <table id="" class="table table-striped datatable">
+                    <table id="" class="table table-striped datatableCol4y5">
                         <thead>
                             <tr>
                                 <th>ID</th>

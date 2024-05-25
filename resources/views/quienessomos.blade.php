@@ -8,6 +8,7 @@
   }
 </style>
 @section("content")
+
 <div class="container" id="quienessomos">
   <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -21,7 +22,7 @@
   </div>
   <h3>INSTALACIONES</h3>
   <p>LAS HABITACIONES</p>
-  <div id="carouselExampleDark2" class="carousel carousel-dark slide">
+  <div id="carouselExampleDark2" class="carousel carousel-dark slide w-75">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleDark2" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -29,7 +30,7 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="10000">
-        <img src="{{ asset('/imagenes/logo-sinfondo.png') }}" class="d-block w-100" alt="...">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/483410606.jpg?k=740a8b5758ebf40bf6df8cc1add787c68ce10d73373006897e0ecb8585b83667&o=&hp=1" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item" data-bs-interval="2000">
         <img src="{{ asset('/imagenes/logo-sinfondo.png') }}" class="d-block w-100" alt="...">

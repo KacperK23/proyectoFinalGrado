@@ -18,9 +18,9 @@
     })
 </script>
 
-<section class="p-2">
-    
-        <div > 
+<div class="colorGradianteVerde">
+<section class="px-2 pb-4">
+        <div class="fotoBannerOferta"> 
             @foreach ($ofertas as $oferta)
                 @if($oferta->banner == 1)
                     <img src="{{ asset($oferta->imagen_banner) }}" id="banner-publi-inicio"
@@ -31,16 +31,16 @@
 
         <form action="{{ route('consultarDisponibilidad') }}" method="post" class="formulariosFondoGris">
             @csrf
-            <div class="mb-3">
-                <label for="fechaEntrada" class="form-label">FECHA DE ENTRADA</label>
-                <input type="date" id="fechaEntrada" name="fechaEntrada" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="fechaSalida" class="form-label">FECHA DE SALIDA</label>
-                <input type="date" id="fechaSalida" name="fechaSalida" class="form-control" required>
+            <div class="mb-3 d-flex align-items-center">
+                <label for="fechaEntrada" class="form-label selectoresFormulario">FECHA DE ENTRADA</label>
+                <input type="date" id="fechaEntrada" name="fechaEntrada" class="form-control  w-75" required>
             </div>
             <div class="mb-3 d-flex align-items-center">
-                <label for="tipoHabitacion" class="form-label selectoresFormulario">Tipo de habitacion</label>
+                <label for="fechaSalida" class="form-label selectoresFormulario">FECHA DE SALIDA</label>
+                <input type="date" id="fechaSalida" name="fechaSalida" class="form-control  w-75" required>
+            </div>
+            <div class="mb-3 d-flex align-items-center">
+                <label for="tipoHabitacion" class="form-label selectoresFormulario">TIPO DE HABITACION</label>
                 <select class="form-select w-75" name="tipoHabitacion" id="tipoHabitacion" required>
                 @foreach($habitaciones as $habitacion){
                     <option value="{{$habitacion->id}}">{{strtoupper($habitacion->tipo)}}</option>
@@ -49,7 +49,7 @@
             </select>
             </div>
             <div class="mb-3 d-flex align-items-center">
-                <label for="numeroHabitacion" class="form-label selectoresFormulario">Numero de habitaciones</label>
+                <label for="numeroHabitacion" class="form-label selectoresFormulario">NUMERO DE HABITACIONES</label>
                 <select class="form-select w-75" name="numeroHabitacion" id="numeroHabitacion" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -123,17 +123,18 @@
             </div> -->
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Enviar</button>
+                    data-bs-target="#exampleModal">BUSCAR DISPONIBILIDAD</button>
             </div>
         </form>
 
-        <h3 class="text-center">OFERTAS DESTACADAS</h3>
+        </div>
+        <h3 class="text-center pb-2">Ofertas destacadas</h3>
         <!-- Cards -->
         <div class="row row-cols-1 row-cols-md-3 g-4 w-75 mx-auto">
                 @foreach ($ofertas as $oferta)
                     <div class="col">
                         <div class="card ofertas p-2">
-                            <img src="{{ asset($oferta->imagen_oferta) }}" class="card-img-top h-75" id="banner-publi-inicio" alt="imagen de la oferta">
+                            <img src="{{ asset($oferta->imagen_oferta) }}" class="card-img-top h-75" id="oferta-inicio" alt="imagen de la oferta">
                             <div class="card-body text-center   ">
                                 <p class=""><strong>{{ $oferta->nombre }}</strong></p>
                                 <a href="{{ route('oferta.mostrar',['oferta' => $oferta->id]) }}" class="btn btn-primary">Ver oferta</a>

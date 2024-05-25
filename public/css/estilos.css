@@ -1,6 +1,7 @@
 #banner-publi-inicio {
     width: 100%;
     height: 125px;
+    box-shadow: 0px 13px 15px 0px rgba(0, 0, 0, 0.5);
 }
 
 form.formulariosFondoGris{
@@ -8,10 +9,12 @@ form.formulariosFondoGris{
     margin: auto;
     margin-bottom: 35px;
     padding: 20px;
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(235, 235, 235);
     border-radius: 5px;
     margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Borde difuminado */
 }
+
 #escudo-maella {
     height: 50px;
     width: 50px;
@@ -19,17 +22,13 @@ form.formulariosFondoGris{
 .ofertas{
     height: 400px;
 }
-.botonIniciarSesion{
-    color: red;
-}
-.botonIniciarSesion:hover{
-    color: white;
-}
-.botonesRegistro{
+
+.botonesRegistro, .botonIniciarSesion{
     color: white;
 }
 
 .selectoresFormulario{
+    font-size: 14px;
     margin-right: auto;
     margin-bottom: 0;
 }
@@ -45,12 +44,18 @@ form.formulariosFondoGris{
 
 #caja1 {
     padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+}
+#caja2{
+    padding-top: 25px;
 }
 #caja2 div.tablasCollapse {
     margin: 20px;
     overflow-y: auto;
     max-height: 150px;
-    max-width: 80%;    
 }
 table {
     border-collapse: collapse;
@@ -62,7 +67,8 @@ tr {
     text-align: center;
 }
 tr.filasDatos:hover{
-    background-color: grey;
+    background-color: #23d6af;
+    color: white;
 
 }
 /*
@@ -74,6 +80,48 @@ tr.filasDatos:hover{
     background-color: red;
 }
 */
+
+.personalizarHR{
+    height: 2px;
+    color: black;
+    width: 80%;
+    margin: 5px;
+}
+.tablasReservasTituloHR{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tablaPerfilUsuario{
+    width: 100%;
+}
+#tablaPerfilUsuario tr{
+border: none;
+}
+#tablaPerfilUsuario tr td{
+padding-bottom: 10px;
+}
+.tabla2ColumnaMiPerfil{
+    padding-left: 10px
+}
+.tablaReservas{
+    width: 90%;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Borde difuminado */
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+#perfil2TablasReservas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#tablaReservasHistorial{
+    display: none;
+}
 
 /*No disponibilidad*/
 #divNoDisponibilidad{
@@ -89,7 +137,18 @@ tr.filasDatos:hover{
 a{
     text-decoration: none;
 }
-
+#circuloPerfilUsuario{
+    height: 75px;
+    width: 75px;
+    background-color: #23d6af;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 15px;
+}
 /*Panel central*/
 #panelcentralImagenOferta{
     height: 50px;
@@ -107,7 +166,17 @@ a{
     font-size: 14px;
 }
 
+.pestanasPanelCentral{
+    color: #23d6af!important;
+}
+.nav-tabs .nav-link.active{
+    color: black!important;
+}
+
 /*Master*/
+h1 a{
+    color: white!important;
+}
 .btnUsuario{
     border: 1px solid white;
     background-color: green;
@@ -146,7 +215,8 @@ a{
     margin-left: 10px;
     margin-right: 10px; 
     margin-bottom: 20px; /* Establece un margen en la parte inferior de cada div */
-    background-color: lightblue; /* Solo para visualización */
+    background-color: #9beedc; /* Solo para visualización */
+    /*background-color: lightblue; /* Solo para visualización */
     flex: none;
     border-radius: 10px;
     display: flex;
@@ -189,4 +259,69 @@ h2{
 /*QUIENES SOMOS*/
 #quienessomos button span{
     color: black;
+}
+.carousel-item img{
+    height: 300px;
+}
+
+/*Estilos master*/
+.colorGradianteVerde{
+    background: linear-gradient(to bottom, #23d6af, white);
+    padding-top: 10px;
+}
+header,#navMenuPrincipal,footer{
+    background-color: #23d6af;
+}
+.nav-link{
+    color: white;
+    }
+.nav-link:hover{
+color: rgb(0, 0, 0);
+}
+
+@media (min-width: 992px) {
+    .menuNavegacionPaginas{
+        border-bottom: 2px solid white;
+    }
+}
+.card{
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Borde difuminado */
+}
+
+/*CLASES CON COLORES*/
+.color3-bg {
+    background-color: #16826a ; /* Cambia el color de fondo */
+    color: white;
+}
+.color3-bg:hover{
+    border-color: #13715b; /* Cambia el color de fondo */
+    color: white;
+}
+.color5-bg {
+    background-color: #b4dcdc ; /* Cambia el color de fondo */
+    color: black;
+}
+
+/*PALETA COLORES 
+.color1 { #24d4ac };
+.color2 { #9cf4ec };
+.color3 { #13715b };
+.color4 { #16826a };
+.color5 { #b4dcdc };
+*/
+
+/*MOSTRAR OFERTA*/
+#contenedorInfoOferta{
+    width: 60%;
+    padding: 20px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+#ofertaImagenInformacion{
+    display: flex;
+}
+#ofertaBoton{
+    background-color: rgb(235, 235, 235);
 }

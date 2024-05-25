@@ -14,15 +14,18 @@ Route::get('/', [HabitacionController::class, 'mostrarHabitaciones'])->name('ini
 Route::get('/quienes-somos', function () {
     return view('quienessomos');
 })->name('quienessomos');
+
 Route::get('/disponibilidad', function () {
     return view('disponibilidad');
 });
 Route::get('/servicios', function () {
     return view('servicios');
 })->name('servicios');
+
 Route::get('/sitioscercanos', function () {
     return view('sitioscercanos');
 })->name('sitioscercanos');
+
 Route::get('/dondeestamos', function () {
     return view('dondeestamos');
 })->name('dondeestamos');
@@ -51,6 +54,7 @@ Route::get('/usuario/{usuario}/edit', [UsuarioController::class, 'editarUsuario'
 Route::post('/usuario/{usuario}', [UsuarioController::class, 'actualizarUsuario'])->name('usuario.actualizar');
 Route::delete('/usuario/{usuario}', [UsuarioController::class, 'eliminarUsuario'])->name('usuario.eliminar');
 Route::post('/usuario', [UsuarioController::class, 'insertarUsuario'])->name('usuario.insertar');
+Route::post('/perfil/{id}/cambiarcontrasena', [UsuarioController::class, 'actualizarContrasena'])->name('usuario.actualizarContrasena');
 
 Route::get('/habitacion/{habitacion}/edit', [HabitacionController::class, 'editarHabitacion'])->name('habitacion.editar');
 Route::post('/habitacion/{habitacion}', [HabitacionController::class, 'actualizarHabitacion'])->name('habitacion.actualizar');
@@ -67,7 +71,7 @@ Route::middleware(['auth'])->get('/quienes-somos', function () {
 
 Route::post('/consultar-disponibilidad', [HabitacionController::class, 'consultarDisponibilidad'])->name('consultarDisponibilidad');
 Route::post('/reserva', [ReservaController::class, 'insertarReserva'])->name('insertarReserva');
-Route::get('/reserva/{id}/pdf', [ReservaController::class, 'reservaPDF'])->name('reserva.reservaPDF');
+Route::get('/reserva/{id}/pdf', [ReservaController::class, 'reservaPDF'])->name('reserva.reservaPDF')->middleware(\App\Http\Middleware\CheckNamedRoute::class);
 
 // Rutas para mostrar formularios
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

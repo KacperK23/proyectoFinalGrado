@@ -15,14 +15,14 @@ class EnviarCorreoReserva extends Mailable
     use Queueable, SerializesModels;
 
     public $reserva;
-    public $pdfPath;
+    public $pdfContents;
     /**
      * Create a new message instance.
      */
-    public function __construct(Reserva $reserva, $pdfPath)
+    public function __construct(Reserva $reserva, $pdfContents)
     {
         $this->reserva = $reserva;
-        $this->pdfPath = $pdfPath;
+        $this->pdfContents = $pdfContents;
     }
 
     /**
@@ -42,7 +42,7 @@ class EnviarCorreoReserva extends Mailable
     {
         return $this->view('email')
                     ->subject('Enviar Correo Reserva')
-                    ->attach($this->pdfPath);
+                    ->attachData($this->pdfContents, 'reserva'.$this->reserva->id.'.pdf');
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -59,5 +61,22 @@ class UsuarioController extends Controller
         $p = Usuario::find($id);
         $p->delete();
         return redirect()->route('mostrar_datos');
+    }
+
+    public function actualizarContrasena($id, Request $r)
+    {
+        $usuario = Usuario::find($id);
+
+        // Verificar la contraseña actual
+        if (!Hash::check($r->contrasenaActual, $usuario->password)) {
+            return redirect()->back()->with('error', 'La contraseña actual es incorrecta.');
+        }
+
+        // Actualizar la contraseña
+        $usuario->password = Hash::make($r->contrasenaNueva);
+        $usuario->save();
+
+        // Redirigir con mensaje de éxito
+        return redirect()->back()->with('success', 'La contraseña se ha cambiado correctamente.');
     }
 }

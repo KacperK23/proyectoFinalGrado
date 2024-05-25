@@ -2,6 +2,8 @@
 <html lang="es-ES">
 <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <title>@yield('title')</title>
 
         <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -15,20 +17,21 @@
 </head>
 <body>
 
-    <header class="bg-info text-white p-3 d-flex align-items-center">
+ 
+    <header class="text-white p-3 d-flex align-items-center">
         <div class="d-flex mx-auto">
-            <img class="mx-2" id="escudo-maella" src="{{ asset('/imagenes/logo-sinfondo.png') }}" alt="">
-            <h1>ALBERGUES KACPER</h1>
+            <a href="{{ route('inicio') }}"><img class="mx-2" id="escudo-maella" src="{{ asset('/imagenes/logo-sinfondo.png') }}" alt=""></a>
+            <h1><a href="{{ route('inicio') }}">ALBERGUES KACPER</a></h1>
         </div>
         <div>
             @if(auth()->check())
     <div class="dropdown">
         @can('isAdmin', auth()->user())
-            <button class="btn dropdown-toggle btnUsuario" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn dropdown-toggle color3-bg" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
         @endcan
 
         @can('isUsuario', auth()->user())
-            <button class="btn dropdown-toggle btnUsuario1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn dropdown-toggle color5-bg" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
         @endcan
             Hola, {{ auth()->user()->name }}
         </button>
@@ -49,16 +52,16 @@
         </ul>
     </div>
           @else 
-          <button type="button" class="btn btn-outline-danger me-2"><a href="{{ route('login') }}"class="botonIniciarSesion">Iniciar sesion</a>
+          <button type="button" class="btn btn-primary me-2"><a href="{{ route('login') }}"class="botonIniciarSesion">Iniciar sesion</a>
           </button>
-          <button type="button" class="btn btn-danger"><a href="{{ route('register') }}" class="botonesRegistro">Registrar</a></button>
+          <button type="button" class="btn btn-primary"><a href="{{ route('register') }}" class="botonesRegistro">Registrar</a></button>
           @endif
         </div>
     </header>
 
 
 
-<nav class="navbar navbar-expand-lg bg-info">
+<nav class="navbar navbar-expand-lg pb-4" id="navMenuPrincipal">
         <div class="container-fluid">
             <a class="navbar-brand d-block d-lg-none" href="#">MENÚ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -68,19 +71,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav w-100 justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('inicio') }}">INICIO</a>
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('inicio') }}">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('quienessomos') }}">¿QUIENES SOMOS?</a>
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('quienessomos') }}">¿QUIENES SOMOS?</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dondeestamos') }}">DONDE ESTAMOS</a>
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('dondeestamos') }}">DONDE ESTAMOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('sitioscercanos') }}">SITIOS CERCANOS</a>
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('sitioscercanos') }}">SITIOS CERCANOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('servicios') }}">SERVICIOS</a>
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('servicios') }}">SERVICIOS</a>
                     </li>
                 </ul>
             </div>
@@ -90,7 +93,7 @@
         @section('content')
         @show
 
-        <footer class="bg-info text-white mt-5 text-center p-3">
+        <footer class="text-white mt-5 text-center p-3">
         <div class="row">
             <div class="col-md-4 mb-3">
                 <h5>AYUDA</h5>

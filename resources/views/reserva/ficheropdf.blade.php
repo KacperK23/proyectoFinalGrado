@@ -32,7 +32,7 @@
 <div class="container">
     <table id="pdfCabezera">
         <tr>
-            <img class="mx-2" id="escudo-maella" src="{{ asset('/imagenes/logo-sinfondo.png') }}" alt="">
+            <img class="mx-2" id="escudo-maella" src="{{ asset('imagenes/logo-sinfondo.png') }}" alt="">
             <td id="texto">JUSTIFICANTE DE RESERVA</td>
         </tr>
     </table>
