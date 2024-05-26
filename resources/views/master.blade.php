@@ -40,6 +40,7 @@
             <li><a class="dropdown-item" href="{{ route('configuracion',[auth()->user()->id])}}">Configuración</a></li>
             @can('isAdmin', auth()->user())
                 <li><a class="dropdown-item" href="{{ route('mostrar_datos') }}">Panel central</a></li>
+                <li><a class="dropdown-item" href="{{ route('´mostrarEstadisticas') }}">Estadísticas</a></li>
             @endcan
             <div class="dropdown-divider"></div>
             <form method="POST" action="{{ route('logout') }}">
@@ -84,6 +85,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menuNavegacionPaginas" href="{{ route('servicios') }}">SERVICIOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('formularioContacto') }}">CONTACTANOS</a>
                     </li>
                 </ul>
             </div>

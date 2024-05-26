@@ -49,7 +49,7 @@
         </table>
         
             <button type="button" class="btn btn-primary my-2 w-25" data-bs-toggle="modal" data-bs-target="#modalOferta">Cambiar contraseña</button>
-            <button type="button" class="btn btn-danger my-2 w-25">Darse de baja</button>
+            <button type="button" class="btn btn-danger my-2 w-25" data-bs-toggle="modal" data-bs-target="#modalDarseBaja">Darse de baja</button>
         @else
             <p>Error en la autenticación - DNI no disponible</p>
         @endif
@@ -57,7 +57,7 @@
         <p>Error en la autenticación</p>
     @endif
     
-     <!-- Modal Reserva-->
+     <!-- Modal Cambiar contraseña-->
      <div class="modal fade" id="modalOferta" tabindex="-1" aria-labelledby="modalReservalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -102,6 +102,36 @@
             }
         });
     </script>
+
+    <!-- Modal darse de baja-->
+    <div class="modal fade" id="modalDarseBaja" tabindex="-1" aria-labelledby="modalReservalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary-subtle">
+                    <h1 class="modal-title fs-5" id="modalReservalLabel">DARSE DE BAJA</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="" action="{{ route('usuario.darseBajaUsuario',['id' => auth()->user()->id]) }}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="contrasenaActual" class="form-label">Contraseña actual</label>
+                            <input type="password" id="contrasenaActual" name="contrasena" class="form-control" placeholder="Ingrese la contraseña antigua" required>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-check-input" type="checkbox" value="1" id="checkBaja" name="checkBaja">
+                            <label class="form-check-label" for="chackBaja"> Darse de baja</label>
+                        </div>
+                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Realizar reserva</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
     
     </div>
     <div class="cajas" id="caja2">

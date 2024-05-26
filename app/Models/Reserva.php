@@ -16,6 +16,7 @@ class Reserva extends Model
         'usuario_id',
         'habitacion_id',
         'cantidad',
+        'pagado',
         'oferta_id',
     ];
     public function habitacion() { return $this->belongsTo('App\Models\Habitacion'); }

@@ -20,6 +20,7 @@ class UsuarioTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'telefono' => '123456789',
             'password' => '$2y$12$iT8T5UNs1FChAcOAc8sRzuh00Tl5UDrWB3cHW6dUEF7gHVMnTJWR.',
+            'baja' => 0,
             'rol_id' => '1',
         ]);
     }

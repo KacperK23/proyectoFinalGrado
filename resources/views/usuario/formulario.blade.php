@@ -28,9 +28,15 @@
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Contraseña</label>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" value="{{ $usuario->password ?? '' }}" required>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña">
   </div> 
-
+  <div class="mb-3 d-flex align-items-center">
+    <label for="baja" class="form-label selectoresFormulario">Baja</label>
+    <select class="form-select w-75" name="baja" id="">
+            <option value="0" @if( $usuario->baja == 0) selected @endif>NO</option>
+            <option value="1" @if( $usuario->baja == 1) selected @endif>SI</option>
+    </select>
+</div>
     <div class="text-center">
       <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
           data-bs-target="#exampleModal">ACTUALIZAR DATOS</button>

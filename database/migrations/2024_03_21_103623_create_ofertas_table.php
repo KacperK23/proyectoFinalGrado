@@ -18,6 +18,9 @@ return new class extends Migration
             $table->double('precio');
             $table->date('fecha_entrada');
             $table->date('fecha_salida');
+            $table->string('imagen_banner',200);
+            $table->string('imagen_oferta',200);
+            $table->boolean('banner',200);
             $table->integer('habitacion_id');
             $table->timestamps();
         });

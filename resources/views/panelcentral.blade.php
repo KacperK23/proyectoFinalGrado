@@ -451,6 +451,7 @@
                                 <th>Email</th>
                                 <th>Telefono</th>
                                 <th>Rol</th>
+                                <th>Baja</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -465,6 +466,12 @@
                                 <td>{{ $usuario->email }}</td>
                                 <td>{{ $usuario->telefono }}</td>
                                 <td>{{ $usuario->rol->rol }}</td>
+                                <td> @if($usuario->baja == 1)
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    @else
+                                    <i class="bi bi-dash-circle-fill text-danger"></i>
+                                    @endif
+                                </td>
                                 <td><button class="btn btn-primary"><a class="text-white"
                                     href="{{ route('usuario.editar', $usuario->id) }}">EDITAR</a></button></td>
                                 <td><form action = "{{ route('usuario.eliminar', $usuario->id) }}" method="POST" onsubmit="return confirmarEliminar()">

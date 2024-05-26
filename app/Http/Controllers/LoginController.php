@@ -22,8 +22,20 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-        return redirect()->intended("/");
+        // Verificar si el usuario existe y no está dado de baja
+        $user = Usuario::where('email', $credentials['email'])->first();
+    
+        if ($user) {
+            if ($user->baja == 1) {
+                return back()->withErrors(['email' => 'Este usuario está dado de baja.']);
+            }
+        
+            if (Auth::attempt($credentials)) {
+                return redirect()->intended("/");
+            }
+        
+            // Autenticación fallida
+            return back()->withErrors(['email' => 'Credenciales incorrectas']);
         }
 
         // Autenticación fallida
@@ -40,6 +52,7 @@ class LoginController extends Controller
             'dni'=> strtoupper($request->dni),
             'apellido'=> $request->apellido,
             'telefono'=> $request->telefono,
+            'baja'=> 0,
             'rol_id'=> 2,
         ]);
 

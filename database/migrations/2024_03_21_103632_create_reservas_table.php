@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('usuario_id');
             $table->unsignedBigInteger('habitacion_id');
             $table->integer('cantidad');
+            $table->boolean('pagado');
             $table->unsignedBigInteger('oferta_id')->nullable();
             $table->timestamps();
 

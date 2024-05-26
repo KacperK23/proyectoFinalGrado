@@ -15,6 +15,7 @@ use App\Mail\EnviarCorreoReserva;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+use function Laravel\Prompts\alert;
 use function Laravel\Prompts\password;
 
 class ReservaController extends Controller
@@ -50,13 +51,15 @@ class ReservaController extends Controller
             'dni'=> $dni,
             'apellido'=> $request->apellido,
             'telefono'=> $request->telefono,
+            'baja'=> 0,
             'rol_id'=> $request->rol_id,
             ]);
          // Obtener el ID del nuevo usuario creado
          $usuario_id = $usuario->id;
         } else {
+            $usuario = $persona;
             // Obtener el ID del usuario existente
-            $usuario_id = $persona->id;
+            $usuario_id = $usuario->id;
         }
         $reserva = Reserva::create([
             'fecha_entrada' => $fecha_inicio,
@@ -65,6 +68,7 @@ class ReservaController extends Controller
             'habitacion_id'=> $idHabitacion,
             'cantidad'=> $cantidad,
             'oferta_id'=> $oferta_id,
+            'pagado'=> 0,
         ]);
 
         // Llamar a la función para generar y guardar el PDF
@@ -87,7 +91,7 @@ class ReservaController extends Controller
     $pdfContents = $dompdf->output();
 
     
-        //$receivers = ['kacperprueba@gmail.com'];
+        $receivers = $usuario->email;
         //Mail::to($receivers)->send(new EnviarCorreoReserva($reserva,$pdfContents));
 
         $data['resumenReserva'] = $reserva;
@@ -179,5 +183,78 @@ class ReservaController extends Controller
         $resumenReserva = Reserva::find($id);
         $pdf = Pdf::loadView('reserva.ficheropdf', compact('resumenReserva'));
         return $pdf->download('invoice.pdf');
+    }
+
+    public function graficoReservas()
+    {
+        // Establecer el locale a español para Carbon
+        Carbon::setLocale('es');
+
+        $currentDate = Carbon::now();
+        $oneYearAgo = $currentDate->copy()->subYear();
+
+        $sales = Reserva::selectRaw('YEAR(fecha_entrada) as year, MONTH(fecha_entrada) as month, COUNT(*) as total')
+            ->whereBetween('fecha_entrada', [$oneYearAgo, $currentDate])
+            ->groupBy('year', 'month')
+            ->orderBy('year')
+            ->orderBy('month')
+            ->get();
+
+        // Arrays to hold month names and totals
+        $months = [];
+        $totals = [];
+
+        for ($i = 0; $i <= 11; $i++) {
+            $date = $currentDate->copy()->subMonths($i);
+            $months[$date->format('Y-m')] = ucfirst($date->translatedFormat('F Y'));  // Use translatedFormat
+            $totals[$date->format('Y-m')] = 0;
+        }
+
+        // Populate the totals array with the actual data from the query
+        foreach ($sales as $sale) {
+            $key = "{$sale->year}-" . str_pad($sale->month, 2, '0', STR_PAD_LEFT);
+            if (isset($totals[$key])) {
+                $totals[$key] = $sale->total;
+            }
+        }
+
+        // Reverse the arrays to have them in chronological order
+        $months = array_reverse($months);
+        $totals = array_reverse($totals);
+
+         // Obtener todas las reservas
+         $reservas = Reserva::all();
+
+         // Inicializar el total facturado
+         $totalFacturado = 0;
+ 
+         // Iterar sobre cada reserva y sumar el precio de la habitación al total
+         foreach ($reservas as $reserva) {
+             $totalFacturado += $reserva->habitacion->precio;
+         }
+
+
+        /*------------------------------------------------------------------------ */
+         // Obtener el año actual
+         $anioActual = Carbon::now()->year;
+
+         // Obtener las reservas desde el 1 de enero del año actual hasta hoy
+         $reservasAnio = Reserva::whereYear('fecha_entrada', $anioActual)
+                             ->get();
+ 
+         // Inicializar el total facturado
+         $totalFacturadoAnio = 0;
+ 
+         // Iterar sobre cada reserva y sumar el precio de la habitación al total
+         foreach ($reservasAnio as $reservaAnio) {
+             $totalFacturadoAnio += $reservaAnio->habitacion->precio;
+         }
+        return view('reserva.estadisticasAdmin', [
+            'months' => array_values($months),
+            'totals' => array_values($totals),
+            'anioActual' => $anioActual,
+            'totalFacturadoAnio' => $totalFacturadoAnio,
+            'totalFacturado' => $totalFacturado
+        ]);
     }
 }

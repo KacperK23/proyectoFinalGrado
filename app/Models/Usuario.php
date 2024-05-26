@@ -24,7 +24,7 @@ class Usuario extends Authenticatable
      * @var array<int, string>
      */
 
-    protected $fillable = ['email', 'password', 'name', 'dni', 'apellido','telefono','rol_id'];
+    protected $fillable = ['email', 'password', 'name', 'dni', 'apellido','telefono', 'baja','rol_id'];
     protected $primaryKey = 'id'; // Especificar 'dni' como clave primaria
     public $timestamps = true;
 
