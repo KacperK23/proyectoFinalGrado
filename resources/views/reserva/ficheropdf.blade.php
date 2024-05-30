@@ -78,5 +78,14 @@
             }
             ?></td>
         </tr>
+        <tr>
+            <td class="vistapdfcolumna1">Precio:</td>
+            <td><?php if($resumenReserva->oferta_id){
+                echo $resumenReserva->oferta->precio."€";
+            } else {
+                echo $resumenReserva->habitacion->precio."€";
+            }
+            ?></td>
+        </tr>
     </table>
 </div>

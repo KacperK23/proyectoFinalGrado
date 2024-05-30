@@ -25,6 +25,5 @@ class DatabaseSeeder extends Seeder
         $this->call(HabitacionTableSeeder::class);
         $this->call(UsuarioTableSeeder::class);
         $this->call(OfertaTableSeeder::class);
-        $this->call(OfertaArticuloTableSeeder::class);
     }
 }

@@ -8,6 +8,8 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\OfertaController;
 use App\Http\Controllers\ArticuloController;
 use Illuminate\Support\Facades\Gate;
+use App\Http\Controllers\WeatherController;
+
 
 Route::get('/', [HabitacionController::class, 'mostrarHabitaciones'])->name('inicio');
 
@@ -37,10 +39,11 @@ Route::post('/configuracion/{id}', [UsuarioController::class, 'actualizarDatos']
 Route::post('/perfil/{id}/cambiarcontrasena', [UsuarioController::class, 'actualizarContrasena'])->name('usuario.actualizarContrasena');
 Route::post('/perfil/{id}/baja', [UsuarioController::class, 'darseBajaUsuario'])->name('usuario.darseBajaUsuario');
 Route::get('/info/oferta/{oferta}', [OfertaController::class, 'verOferta'])->name('oferta.mostrar');
-Route::get('/estadisticas', [ReservaController::class, 'graficoReservas'])->name('´mostrarEstadisticas');
+Route::get('/prevision', [WeatherController::class, 'index'])->name('tiempo.prevision');
 
 //Route::resource('reserva', ReservaController::class);
 Route::middleware(['can:isAdmin'])->group(function () {
+Route::get('/estadisticas', [ReservaController::class, 'graficoReservas'])->name('´mostrarEstadisticas');
 Route::get('/panelcentral', [ReservaController::class, 'mostrarDatos'])->name('mostrar_datos');
 
 Route::get('/reservas/{reserva}/edit', [ReservaController::class, 'editarReserva'])->name('reserva.editar');
@@ -81,10 +84,11 @@ Route::get('/reserva/{id}/pdf', [ReservaController::class, 'reservaPDF'])->name(
 
 // Rutas para mostrar formularios
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login/cambiar-contrasena', [UsuarioController::class, 'generarContrasena'])->name('cambiarContrasena');
 Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('register');
 
-Route::get('/formu', [UsuarioController::class, 'showFormularioContactanos'])->name('formularioContacto');
-Route::post('/formu', [UsuarioController::class, 'enviarFormularioContactanos'])->name('enviarformularioContacto');;
+Route::get('/contactanos', [UsuarioController::class, 'showFormularioContactanos'])->name('formularioContacto');
+Route::post('/contactanos', [UsuarioController::class, 'enviarFormularioContactanos'])->name('enviarformularioContacto');;
 
     // Ruta solo para administradores
     Route::get('/privada', function () {

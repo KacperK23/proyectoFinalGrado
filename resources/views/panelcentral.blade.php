@@ -140,6 +140,13 @@
       <div class="alert alert-primary d-none d-md-block d-lg-none mt-5 mx-2" role="alert">
         En tablet solo se muestra la tabla de reservas de hoy, cambia a un dispositivo grande como un ordenador para verlas.
     </div>
+
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     
     <div class="container mt-5 d-none d-md-table">
         <ul class="nav nav-tabs" id="myTabs">

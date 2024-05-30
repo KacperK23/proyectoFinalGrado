@@ -35,11 +35,11 @@ class LoginController extends Controller
             }
         
             // Autenticación fallida
-            return back()->withErrors(['email' => 'Credenciales incorrectas']);
+            return back()->with('error', 'Usuario o contraseña incorrecta');
         }
 
         // Autenticación fallida
-        return back()->withErrors(['email' => 'Credenciales incorrectas']);
+        return back()->with('error', 'Usuario o contraseña incorrecta');
     }
 
     public function register(Request $request)

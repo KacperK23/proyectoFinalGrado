@@ -17,7 +17,7 @@
                 <button class="btn btn-primary" type="button">¿Quienes somos?</button>
             </a>
 
-            <a href="{{ url('/contacto') }}">
+            <a href="{{ url('/contactanos') }}">
                 <button class="btn btn-primary" type="button">FORMULARIO DE CONTACTO</button>
             </a>
         </div>

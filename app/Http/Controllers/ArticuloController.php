@@ -17,13 +17,13 @@ class ArticuloController extends Controller
         $articulo->descripcion = $r->descripcion;
         $articulo->save();
         
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Artículo actualizado correctamente');
     }
 
     public function eliminarArticulo($id) {
         $p = Articulo::find($id);
         $p->delete();
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Artículo eliminado correctamente');
     }
 
     public function insertarArticulo(Request $r){
@@ -32,6 +32,6 @@ class ArticuloController extends Controller
         'descripcion' => $r->descripcion,
         ]);
         
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Artículo insertado correctamente');
     }
 }

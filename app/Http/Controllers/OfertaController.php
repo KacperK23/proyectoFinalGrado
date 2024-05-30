@@ -76,13 +76,13 @@ class OfertaController extends Controller
          // Actualizar los artículos asociados a la oferta
         $oferta->articulos()->sync([$r->tipoArticulo]);
 
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Oferta actualizada correctamente');;
     }
 
     public function eliminarOferta($id) {
         $p = Oferta::find($id);
         $p->delete();
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Oferta eliminada correctamente');;
     }
 
     public function insertarOferta(Request $r) {
@@ -133,7 +133,7 @@ class OfertaController extends Controller
         // Actualiza los artículos asociados a la oferta
         $oferta->articulos()->sync([$r->tipoArticulo]);
         
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Oferta insertada correctamente');
     }
 
     public function verOferta($id) {

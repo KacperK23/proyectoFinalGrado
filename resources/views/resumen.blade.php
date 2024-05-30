@@ -11,6 +11,7 @@
     <p><strong>DNI:</strong> {{ $resumenReserva->usuario->dni }}</p>
     <p><strong>Tipo de Habitación:</strong> {{ $resumenReserva->habitacion->tipo }}</p>
     <p><strong>Cantidad de habitaciones:</strong> {{ $resumenReserva->cantidad }}</p>
+    <p><strong>Precio:</strong> {{ $resumenReserva->habitacion->precio }}€</p>
 
     <a href="{{ route('reserva.reservaPDF',[$resumenReserva->id])}}">
       <button class="btn btn-primary" type="button">DESCARGAR RESERVA EN PDF</button>

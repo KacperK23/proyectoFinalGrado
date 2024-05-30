@@ -32,6 +32,10 @@ form.formulariosFondoGris{
     margin-right: auto;
     margin-bottom: 0;
 }
+#indexGruposGrandes{
+    font-size: 10px;
+    color: red;
+}
 
 /*Estilo pagina perfil*/
 #caja-padre {
@@ -257,6 +261,12 @@ h2{
 }
 
 /*QUIENES SOMOS*/
+#quienessomosFotos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #quienessomos button span{
     color: black;
 }
@@ -324,4 +334,28 @@ color: rgb(0, 0, 0);
 }
 #ofertaBoton{
     background-color: rgb(235, 235, 235);
+}
+
+@media (max-width: 480px) {
+    #botomMasterRegistro{
+        width: 116.4px;
+        margin-top: 5px;
+        font-size: 13px;
+    }
+    #cajaBotonesInicioRegistro{
+        margin-left: 15px;
+    }
+    #caja-padre {
+        flex-direction: column;
+    }
+    .cajas{
+        width: 100%;
+    }
+}
+
+.quienesSomosTituloSeccion{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
 }

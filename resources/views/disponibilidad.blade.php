@@ -17,15 +17,9 @@
 <div class="colorGradianteVerde">
 <form action="{{ route('insertarReserva') }}" method="post" class="formulariosFondoGris">
     @csrf
-    <!--
-    @if(auth()->check())
-    <p>Usuario autorizado</p>
-    @else 
-    <p>Usuario no autorizado</p>
-    @endif
-    <p>{{$reservas}}</p>
-    <p>Total{{$total}}</p>
-    -->
+    <div class="alert alert-success" role="alert">
+      Se ha encontrado disponibilidad. <strong>FORMALIZA LA RESERVA</strong>
+    </div>
     <div class="mb-3">
         <label for="fechaEntrada" class="form-label">FECHA DE ENTRADA</label>
         <input type="date" id="fechaEntrada" name="fechaEntrada" class="form-control" value="{{ $fehcaInicio }}" readonly>

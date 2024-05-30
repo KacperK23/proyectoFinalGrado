@@ -56,7 +56,7 @@
                         <option value="3" id="indexOpcionLiteras" style="display: none">3</option>
                 </select>
             </div>
-
+            <p id="indexGruposGrandes"><strong>*si son grupos de mas de 3 personas contactar con el albergue para preguntar por la disponibilidad</strong></p>
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     const fechaEntrada = document.getElementById('fechaEntrada');
@@ -130,7 +130,7 @@
         </div>
         <h3 class="text-center pb-2">Ofertas destacadas</h3>
         <!-- Cards -->
-        <div class="row row-cols-1 row-cols-md-3 g-4 w-75 mx-auto">
+        <div class="row row-cols-1 row-cols-md-3 g-4 w-75 mx-auto d-flex justify-content-center">
                 @foreach ($ofertas as $oferta)
                     <div class="col">
                         <div class="card ofertas p-2">

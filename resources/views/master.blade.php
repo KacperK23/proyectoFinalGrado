@@ -20,10 +20,10 @@
  
     <header class="text-white p-3 d-flex align-items-center">
         <div class="d-flex mx-auto">
-            <a href="{{ route('inicio') }}"><img class="mx-2" id="escudo-maella" src="{{ asset('/imagenes/logo-sinfondo.png') }}" alt=""></a>
+            <a href="{{ route('inicio') }}"><img class="mx-2" id="escudo-maella" src="{{ asset('/imagenes/logo-casa-blanco.png') }}" alt=""></a>
             <h1><a href="{{ route('inicio') }}">ALBERGUES KACPER</a></h1>
         </div>
-        <div>
+        <div id="cajaBotonesInicioRegistro">
             @if(auth()->check())
     <div class="dropdown">
         @can('isAdmin', auth()->user())
@@ -55,7 +55,7 @@
           @else 
           <button type="button" class="btn btn-primary me-2"><a href="{{ route('login') }}"class="botonIniciarSesion">Iniciar sesion</a>
           </button>
-          <button type="button" class="btn btn-primary"><a href="{{ route('register') }}" class="botonesRegistro">Registrar</a></button>
+          <button type="button" class="btn btn-primary" id="botomMasterRegistro"><a href="{{ route('register') }}" class="botonesRegistro">Registrar</a></button>
           @endif
         </div>
     </header>
@@ -75,10 +75,10 @@
                         <a class="nav-link menuNavegacionPaginas" href="{{ route('inicio') }}">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menuNavegacionPaginas" href="{{ route('quienessomos') }}">¿QUIENES SOMOS?</a>
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('quienessomos') }}">¿QUIÉNES SOMOS?</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menuNavegacionPaginas" href="{{ route('dondeestamos') }}">DONDE ESTAMOS</a>
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('dondeestamos') }}">¿DÓNDE ESTAMOS?</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menuNavegacionPaginas" href="{{ route('sitioscercanos') }}">SITIOS CERCANOS</a>
@@ -87,7 +87,10 @@
                         <a class="nav-link menuNavegacionPaginas" href="{{ route('servicios') }}">SERVICIOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link menuNavegacionPaginas" href="{{ route('formularioContacto') }}">CONTACTANOS</a>
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('tiempo.prevision') }}">PREVISIÓN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menuNavegacionPaginas" href="{{ route('formularioContacto') }}">CONTÁCTANOS</a>
                     </li>
                 </ul>
             </div>
@@ -98,57 +101,74 @@
         @show
 
         <footer class="text-white mt-5 text-center p-3">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5>AYUDA</h5>
-                <hr>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">Como realizar la reserva</li>
-                    <li class="nav-item mb-2">Cancelar reserva</li>
-                    <li class="nav-item mb-2">Tipos de reservas</li>
-                    <li class="nav-item mb-2">Preguntas frecuentes</li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 mb-3">
+            <div class="row">
+            <div class="col-md-6 mb-3">
                 <div class="row justify-content-center">
                     <div class="justify-content-center mb-2">
                         <h5>SECCIONES</h5>
                     </div>
-
+                    
                     <hr>
-
-                    <div class="mb-3">
-                        <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="index.html" class="nav-link p-0 text-white">Inicio</a>
-                            </li>
-                            <li class="nav-item mb-2"><a href="calendario.html"
-                                    class="nav-link p-0 text-white">¿Quienes somos?</a></li>
-                            <li class="nav-item mb-2"><a href="contactanos.html"
-                                    class="nav-link p-0 text-white">Donde estamos</a></li>
-                            <li class="nav-item mb-2"><a href="historico.html"
-                                    class="nav-link p-0 text-white">Sitios cercanos</a></li>
-                            <li class="nav-item mb-2"><a href="imagenes.html"
-                                    class="nav-link p-0 text-white">Servicios</a></li>
-                        </ul>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2">
+                                    <a class="nav-link p-0 text-white" href="{{ route('inicio') }}">INICIO</a>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <a class="nav-link p-0 text-white" href="{{ route('quienessomos') }}">¿QUIENES SOMOS?</a>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <a class="nav-link p-0 text-white" href="{{ route('dondeestamos') }}">DONDE ESTAMOS</a>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <a class="nav-link p-0 text-white" href="{{ route('sitioscercanos') }}">SITIOS CERCANOS</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <ul class="nav flex-column">
+                                <li class="nav-item mb-2">
+                                    <a class="nav-link p-0 text-white" href="{{ route('servicios') }}">SERVICIOS</a>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <a class="nav-link p-0 text-white" href="{{ route('formularioContacto') }}">CONTACTANOS</a>
+                                </li>
+                                <li class="nav-item mb-2">
+                                    <a class="nav-link p-0 text-white" href="{{ route('tiempo.prevision') }}">PREVISIÓN</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4 mb-3">
-                <h5>Información</h5>
-                <hr>
-                <h6>Dirección oficina:</h6>
-                <p>Calle Mayor 2, Maella (Zaragoza)</p>
-                <br>
-                <h6>Teléfono:</h6>
-                <p>+34 976 00 00 000</p>
-                <br>
-                <h6>Correo electrónico:</h6>
-                <p>preuba@maella.com</p>
+            
+            <div class="col-md-6 mb-3">
+                <div class="row justify-content-center">
+                    <div class="justify-content-center mb-2">
+                        <h5>Información</h5>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <h6>Dirección oficina:</h6>
+                            <p>Calle Mayor 2, Maella (Zaragoza)</p>
+                            <br>
+                            <h6>Teléfono:</h6>
+                            <p>+34 976 00 00 000</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>Correo electrónico:</h6>
+                            <p>preuba@maella.com</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
+    </div>
         <div class="d-flex flex-column flex-sm-row justify-content-center py-4 border-top">
             <p>&copy; 2024 Company, Inc. All rights reserved.</p>
             <ul class="list-unstyled d-flex mr-3">

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EnviarCorreoFormularioContacto;
+use App\Mail\EnviarCorreoRecuperarContrasena;
 
 class UsuarioController extends Controller
 {
@@ -23,7 +24,7 @@ class UsuarioController extends Controller
         $usuario->telefono = $r->telefono;
         $usuario->save();
 
-        return redirect()->route('mostrarperfil', ['id' => $id]);
+        return redirect()->route('mostrarperfil', ['id' => $id])->with('success', 'Perfil actualizado correctamente');
     }
 
     public function insertarUsuario(Request $request)
@@ -40,7 +41,7 @@ class UsuarioController extends Controller
             'rol_id'=> 2,
         ]);
 
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Usuario insertado correctamente');
     }
 
     public function editarUsuario($id) {
@@ -62,13 +63,13 @@ class UsuarioController extends Controller
         $usuario->baja = $r->baja;
         $usuario->save();
         
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Usuario actualizado correctamente');
     }
 
     public function eliminarUsuario($id) {
         $p = Usuario::find($id);
         $p->delete();
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Usuario eliminado correctamente');
     }
 
     public function actualizarContrasena($id, Request $r)
@@ -130,4 +131,28 @@ class UsuarioController extends Controller
         return redirect('/')->with('success', 'Correo enviado con éxito');
 
     }
+    public function generarContrasena(Request $r)
+    {
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!/()?¿-*+';
+        $contrasena = '';
+
+        for ($i=0; $i<10; $i++){
+            $numeroAleatorio = random_int(0, strlen($caracteres) - 1);
+            $contrasena .= $caracteres[$numeroAleatorio];
+        }
+
+        $usuario = Usuario::where('email', $r->emailUsuario)->first();
+    if ($usuario) {
+        $usuario->password = bcrypt($contrasena);
+        $usuario->save();
+
+        $emailUsuario = $usuario->email;
+        Mail::to($emailUsuario)->send(new EnviarCorreoRecuperarContrasena($contrasena, $emailUsuario));
+
+        return redirect()->back()->with('success', 'La contraseña se ha cambiado correctamente.');
+    } else {
+        return redirect()->back()->with('error', 'El usuario no existe.');
+    }
+    }
+
 }

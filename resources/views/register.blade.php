@@ -5,6 +5,8 @@
 @section("content")
 <div class="colorGradianteVerde">
           <form method="POST" acction="{{route('register')}}" class="formulariosFondoGris">
+            <h2>CREAR CUENTA</h2>
+            <hr>
             @csrf
             <div class="mb-3">
               <label for="dni" class="form-label">DNI</label>

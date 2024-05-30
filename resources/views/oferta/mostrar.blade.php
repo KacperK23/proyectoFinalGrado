@@ -4,7 +4,7 @@
 
 @section("content")
 <div class="container text-center" id="contenedorInfoOferta">
-    <h2>INFORMACION DE LA OFERTA</h2>
+    <h2>INFORMACIÓN DE LA OFERTA</h2>
     <hr>
     <div id="ofertaImagenInformacion">
         <div class="w-50">
@@ -12,9 +12,9 @@
         </div>
     
         <div class="w-50">
-            <p><strong>NOMBRE:</strong> {{ $oferta->nombre }}</p>
+            <p><strong>Nombre:</strong> {{ $oferta->nombre }}</p>
             <p><strong>Descripcion:</strong> {{ $oferta->descripcion }}</p>
-            <p><strong>Precio:</strong> {{ $oferta->precio}}</p>
+            <p><strong>Precio:</strong> {{ $oferta->precio}}€</p>
             <p><strong>Fechas de entrada:</strong> {{ $oferta->fecha_entrada}}</p>
             <p><strong>Fecha de salida:</strong> {{ $oferta->fecha_salida}}</p>
             <p><strong>Tipo de Habitación:</strong> {{ $oferta->habitacion->tipo }}</p>

@@ -6,9 +6,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         #salesChartContainer {
-            width: 75%;
-            margin: auto;
+            display: flex;
             margin-top: 15px;
+            justify-content: center;
         }
         #salesChart {
             height: 500px !important;

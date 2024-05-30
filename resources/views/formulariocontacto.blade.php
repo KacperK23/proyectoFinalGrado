@@ -18,11 +18,11 @@
       <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
     </div>
     <div class="mb-3">
-      <label for="duda" class="form-label">Explicanos tu duda</label>
-      <textarea class="form-control" id="duda" rows="3" name="duda" placeholder="Explicanos tu duda" required></textarea>
+      <label for="duda" class="form-label">Asunto</label>
+      <textarea class="form-control" id="duda" rows="3" name="duda" placeholder="Explícanos tu duda" required></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-block">Acceder</button>
+    <button type="submit" class="btn btn-primary btn-block">ENVIAR</button>
   </form>
 
 </div>

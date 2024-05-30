@@ -29,13 +29,13 @@ class ReservaController extends Controller
     public function insertarReserva(Request $request){
         $fecha_inicio = $request->input('fechaEntrada');
         $fecha_salida = $request->input('fechaSalida');
-        $dni = $request->input('dni');
+        $email = $request->input('email');
         $idHabitacion = $request->input('idHabitacion');
         $cantidad = $request->input('cantidad');
         $oferta_id = $request->input('ofertaID');
 
         // Verificar si el usuario ya existe
-        $persona = Usuario::where('dni', $dni)->first();
+        $persona = Usuario::where('email', $email)->first();
 
         if (!$persona) {
         // Crear nuevo usuario
@@ -48,7 +48,7 @@ class ReservaController extends Controller
             'email' => $request->email,
             'password' => $contrasena,
             'name' => $request->name,
-            'dni'=> $dni,
+            'dni'=> $request->dni,
             'apellido'=> $request->apellido,
             'telefono'=> $request->telefono,
             'baja'=> 0,
@@ -92,7 +92,7 @@ class ReservaController extends Controller
 
     
         $receivers = $usuario->email;
-        //Mail::to($receivers)->send(new EnviarCorreoReserva($reserva,$pdfContents));
+        Mail::to($receivers)->send(new EnviarCorreoReserva($reserva,$pdfContents));
 
         $data['resumenReserva'] = $reserva;
         return view('resumen', $data);
@@ -170,19 +170,19 @@ class ReservaController extends Controller
         $reserva->pagado = $r->pagado;
         $reserva->save();
 
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Reserva actualizada correctamente');
     }
 
     public function eliminarReserva($id) {
         $p = Reserva::find($id);
         $p->delete();
-        return redirect()->route('mostrar_datos');
+        return redirect()->route('mostrar_datos')->with('success', 'Reserva eliminada correctamente');
     }
 
     public function reservaPDF($id){
         $resumenReserva = Reserva::find($id);
         $pdf = Pdf::loadView('reserva.ficheropdf', compact('resumenReserva'));
-        return $pdf->download('invoice.pdf');
+        return $pdf->download('reserva'.$id.'.pdf');
     }
 
     public function graficoReservas()

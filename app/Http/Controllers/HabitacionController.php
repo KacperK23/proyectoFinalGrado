@@ -96,13 +96,13 @@ public function actualizarHabitacion($id, Request $r) {
     $habitacion->cantidad = $r->cantidad;
     $habitacion->save();
     
-    return redirect()->route('mostrar_datos');
+    return redirect()->route('mostrar_datos')->with('success', 'Habitacion actualizar correctamente');
 }
 
 public function eliminarHabitacion($id) {
     $p = Habitacion::find($id);
     $p->delete();
-    return redirect()->route('mostrar_datos');
+    return redirect()->route('mostrar_datos')->with('success', 'Habitacion eliminado correctamente');
 }
 
 public function insertarHabitacion(Request $r){
@@ -112,7 +112,7 @@ public function insertarHabitacion(Request $r){
     'cantidad' => $r->cantidad,
     ]);
     
-    return redirect()->route('mostrar_datos');
+    return redirect()->route('mostrar_datos')->with('success', 'Habitacion insertar correctamente');
 }
 }
     
